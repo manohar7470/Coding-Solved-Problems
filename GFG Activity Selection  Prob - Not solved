@@ -1,0 +1,49 @@
+class Act{
+    int st,en;
+    public Act(int st, int en)
+    {
+        this.st=st;
+        this.en=en;
+    }
+}
+class Compare{
+    static void compare(Act arr[], int n)
+    {
+        Arrays.sort(arr, new Comparator<Act>(){
+          //  @Override
+            public int compare(Act a1, Act a2)
+            {
+                return a1.en-a2.en;
+            }
+        });
+    }
+}
+class Solution
+{
+    //Function to find the maximum number of activities that can
+    //be performed by a single person.
+    public static int activitySelection(int start[], int end[], int n)
+    {
+        // add your code here
+        Act a[]=new Act[n];
+        for(int i=0;i<n;i++)
+        {
+            a[i].st=start[i];
+            a[i].en=end[i];
+        }
+        Compare cmp=new Compare();
+        cmp.compare(a,n);
+        int i=1,j=0,act=1;
+        
+        while(i<n && j<n && i>=j)
+        {
+            if(a[i].st>=a[j].en)
+            {act++;
+                
+             j=i;
+            }
+            i++;
+        }
+        return act;
+    }
+}
