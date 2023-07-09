@@ -1,0 +1,51 @@
+package com.code;
+
+
+public class MyClass {
+MyClass(){
+	System.out.println("Hello");
+}
+	static int Sum (int a, int b)
+	{			
+	return a+b;	
+	}
+	public class Exchange{
+		int a,b;
+		Exchange(int a, int b)
+		{
+			this.a=a; this.b=b;
+		}
+		void exchange(Exchange o)
+		{
+			int t=o.a;
+			o.a=o.b;
+			o.b=t;
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyClass m=new MyClass();
+		
+		System.out.println("Hello Bean");
+		int a=9,b=10;
+		int x= Sum(a,b);
+		System.out.println(x);
+		//System.out.println(a,b);
+		Exchange o=m.new Exchange(a,b);
+		System.out.println("Before exchnage - a :" + a + ", b :"+b);
+		o.exchange(o);
+		System.out.println("After Exchange  - a :" + o.a + ", b :"+o.b);
+		
+		
+		
+
+	}
+	/*
+	 * static class Thing will make your program work.
+
+As it is, you've got Thing as an inner class, which (by definition) is associated with a particular instance of Hello (even if it never uses or refers to it), which means it's an error to say new Thing(); without having a particular Hello instance in scope.
+
+If you declare it as a static class instead, then it's a "nested" class, which doesn't need a particular Hello instance.
+	 */
+
+}
