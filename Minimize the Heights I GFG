@@ -1,0 +1,31 @@
+//Code link -  https://practice.geeksforgeeks.org/problems/minimize-the-heights-i/1
+package com.coder;
+
+import java.util.Arrays;
+
+public class PairClassUse {
+ 
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int n=5;
+		Integer []a =new Integer[] {3,9,12,16,20};
+		Arrays.sort(a);
+		int dff = Integer.MAX_VALUE;
+		int k=3;
+		int mn=Integer.MAX_VALUE, mx=Integer.MIN_VALUE;
+		for (int i=1;i<a.length;i++)
+		{
+			mn = Math.min(a[0]+k, a[i]-k);
+			mx= Math.max(a[n-1]-k, a[i-1]+k);
+			dff=Math.min(dff, mx-mn);
+			
+		}
+		System.out.println("Min diff is : "+ dff);
+		
+		
+
+	}
+
+}
