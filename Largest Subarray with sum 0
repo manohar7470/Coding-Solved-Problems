@@ -1,0 +1,33 @@
+class GfG
+{
+    int maxLen(int arr[], int n)
+    {
+        // Your code here
+       /*13 5 2 3 -3 -2 -5 10
+       13 18 20 23 20 18 13 23
+       23 10 5 3 0 3 5 10
+       
+       15 13 15 7  8  15 25 48
+       48 33 35 33 41 40 33 23 
+       33 20 20 26 33 35 8 25*/
+       HashMap<Integer, Integer>h = new HashMap<>();
+       int sm=0;int mxl =0;
+       for (int i=0;i<n;i++)
+       {
+          sm+=arr[i];
+          if(sm==0)
+          mxl = i+1;
+          
+          Integer pri=h.get(sm);
+          if(pri!=null)
+          {
+              mxl = Math.max(mxl, i-pri);
+          }
+          else
+          h.put(sm,i);
+       }
+       return mxl;
+       
+       
+    }
+}
