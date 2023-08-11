@@ -1,0 +1,55 @@
+class Solution{
+    static int minJumps(int[] arr){
+        // your code here
+        //1 2 5 2 3 10 3 4 4 0 
+        int mnj=Integer.MAX_VALUE;
+        int jcount=0;
+        int mxj=arr[0];
+        mnj=1;jcount=arr[0];
+        int l=arr.length;
+        if(l==1)
+        return 0;
+        for (int i=0;i<l;i++)
+        {
+              if(i==l-1)
+              return mnj;
+               if(arr[i]>mxj)
+               {
+                  mxj=arr[i]; 
+               }
+               if(jcount==0 && mxj >0)
+               {
+                   jcount =mxj;mnj++;
+               }
+               if(jcount==0||mxj==0)
+               return -1;
+               mxj--;jcount--;
+            
+        }
+        return mnj;
+       /* int n=arr.length;
+        int jmp=1,step=arr[0],mxr=arr[0];
+        if(n==1)
+        return 0;
+        if(arr[0]==0)
+        return -1;
+        for(int i=1;i<n;i++)
+        {
+           if(i==n-1)
+            return jmp; 
+            step--;
+            mxr=Math.max(mxr,i+arr[i]);
+            if(step==0)
+            {
+                jmp++;
+                if(i>=mxr)
+                return -1;
+                step=mxr-i;
+            }
+         
+            
+        }
+        return -1;*/
+        
+    }
+}
